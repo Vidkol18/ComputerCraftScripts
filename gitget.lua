@@ -38,7 +38,7 @@ local function save(data, file)
             fs.delete(string.sub(file, 1,
                 #file - #fs.getName(file)))
         end
-        fs.makeDir(string.sub(file, 1, #file - #fs.getName(file)))
+        fs.makeDir(string.sub(file, 1, #file - #fs.getName(file) .. 'blurg'))
     end
     local f = fs.open(file, 'w')
     f.write(data)
@@ -57,7 +57,7 @@ function splitString(inputstr, sep)
 end
 
 local function download(url, file)
-    save(http.get(url).readAll, splitString(file[1]))
+    save(http.get(url).readAll, file)
 end
 
 if not json then
@@ -69,8 +69,8 @@ preset.start()
 local data = json.decode(http.get('https://api.github.com/repo/' ..
     args[1] .. '/' .. args[2] .. ' /git/trees/' .. args[3] .. '?recursive=1').readAll())
 
-if data.messgae and data.message:find('API rate limit exceeded') then error('Out of API calls, try again later') end
-if data.messgae and data.message == 'Not found' then
+if data.message and data.message:find('API rate limit exceeded') then error('Out of API calls, try again later') end
+if data.message and data.message == 'Not found' then
     error('Invalid repository', 2)
 else
     for k, v in pairs(data.tree) do
