@@ -47,7 +47,7 @@ end
 
 function splitString(inputstr, sep)
     if sep == nil then
-        sep = ".lua"
+        sep = "."
     end
     local t = {}
     for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
@@ -57,8 +57,7 @@ function splitString(inputstr, sep)
 end
 
 local function download(url, file)
-    print(splitString(file)) --testing
-    save(http.get(url).readAll, file)
+    save(http.get(url).readAll, splitString(file[1]))
 end
 
 if not json then
