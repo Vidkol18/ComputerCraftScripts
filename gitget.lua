@@ -45,7 +45,19 @@ local function save(data, file)
     f.close()
 end
 
+function splitString(inputstr, sep)
+    if sep == nil then
+        sep = ".lua"
+    end
+    local t = {}
+    for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+        table.insert(t, str)
+    end
+    return t
+end
+
 local function download(url, file)
+    print(splitString(file)) --testing
     save(http.get(url).readAll, file)
 end
 
