@@ -31,29 +31,35 @@ if #args < 2 then
     error()
 end
 
-local function save(data, file)
+local function saveOLD(data, file)
     local file = shell.resolve(file:gsub('%%20', ' '))
     if not (fs.exists(string.sub(file, 1, #file - #fs.getName(file))) and fs.isDir(string.sub(file, 1, #file - #fs.getName(file)))) then
         if fs.exists(string.sub(file, 1, #file - #fs.getName(file))) then
             fs.delete(string.sub(file, 1,
                 #file - #fs.getName(file)))
         end
-        fs.makeDir(string.sub(file, 1, #file - #fs.getName(file) .. 'blurg'))
+        fs.makeDir(string.sub(file, 1, #file - #fs.getName(file)))
     end
     local f = fs.open(file, 'w')
     f.write(data)
     f.close()
 end
 
-function splitString(inputstr, sep)
-    if sep == nil then
-        sep = "."
+local function save(data, file)
+    -- Remove file extension
+    local fileWithoutExtension = string.gsub(file, '%.%w+$', '')
+    local resolvedFile = shell.resolve(fileWithoutExtension:gsub('%%20', ' '))
+
+    if not (fs.exists(string.sub(resolvedFile, 1, #resolvedFile - #fs.getName(resolvedFile))) and fs.isDir(string.sub(resolvedFile, 1, #resolvedFile - #fs.getName(resolvedFile)))) then
+        if fs.exists(string.sub(resolvedFile, 1, #resolvedFile - #fs.getName(resolvedFile))) then
+            fs.delete(string.sub(resolvedFile, 1, #resolvedFile - #fs.getName(resolvedFile)))
+        end
+        fs.makeDir(string.sub(resolvedFile, 1, #resolvedFile - #fs.getName(resolvedFile)))
     end
-    local t = {}
-    for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
-        table.insert(t, str)
-    end
-    return t
+
+    local f = fs.open(resolvedFile, 'w')
+    f.write(data)
+    f.close()
 end
 
 local function download(url, file)
