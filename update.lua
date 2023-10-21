@@ -5,7 +5,7 @@ function hte()
         shell.run("gitget", username, repo)
     else
         print("GitGet application does not exist. Downloading...")
-        shell.run("pastebin", "get", "W5ZkVYSi", "gitget")
+        shell.run("pastebin", "get", "g0tM5ykS", "gitget")
         shell.run("gitget", username, repo)
     end
 end
