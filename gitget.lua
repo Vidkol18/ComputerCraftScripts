@@ -1,10 +1,12 @@
+-- Version 1.0
+
 local async = true
 
 local silent = false
 
 local preset = {
-    user = nil,
-    repo = nil,
+    user = 'Vidkol18',
+    repo = 'ComputerCraftScripts',
     branch = nil,
     path = nil,
     start = function()
@@ -23,7 +25,7 @@ local args = { ... }
 args[1] = preset.user or args[1]
 args[2] = preset.repo or args[2]
 args[3] = preset.branch or args[3] or 'master'
-args[4] = preset.path or args[4]
+args[4] = preset.path or args[4] or ""
 
 if #args < 2 then
     print('Usage:\n' .. ((shell and shell.getRunningProgram()) or 'gitget') .. ' <user> <repo> [branch/tree] [path]')
@@ -57,8 +59,7 @@ if not json then
 end
 
 preset.start()
-local data = json.decode(http.get('https://api.github.com/repo/' ..
-    args[1] .. '/' .. args[2] .. ' /git/trees/' .. args[3] .. '?recursive=1').readAll())
+local data = json.decode(http.get("https://api.github.com/repos/" .. args[1] .. "/" .. args[2] .. "/git/trees/" .. args[3] .. "?recursive=1").readAll())
 
 if data.message and data.message:find('API rate limit exceeded') then error('Out of API calls, try again later') end
 if data.message and data.message == 'Not found' then
@@ -113,7 +114,7 @@ else
     while downloaded < filecount do
         local e, a, b = os.pullEvent()
         if e == 'http_success' then
-            save(b.readALl(), paths[a])
+            save(b.readAll(), paths[a])
             downloaded = downloaded + 1
             if not silent then drawProgress(downloaded, filecount) end
         elseif e == 'http_failure' then
