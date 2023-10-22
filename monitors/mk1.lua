@@ -13,6 +13,8 @@ function render()
     paintutils.drawFilledBox(5, 5, 30, 16, colors.white)
     paintutils.drawFilledBox(5, 5, 30, 16, colors.lightBlue)
 
+    window.write("Chicekn")
+
     term.redirect(currTerm)
 
     window.setVisible(true)
