@@ -3,6 +3,19 @@ directory ="methods/"
 if fs.isDir(directory) then fs.delete(directory) end
 fs.makeDir(directory)
 
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k,v in pairs(o) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
 function getMethods()
     local file = peripheral.getType(p)
     local h = fs.open(file, "w")
@@ -27,17 +40,6 @@ getMethods()
 
 
 
-function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
-        for k,v in pairs(o) do
-            if type(k) ~= 'number' then k = '"'..k..'"' end
-            s = s .. '['..k..'] = ' .. dump(v) .. ','
-        end
-        return s .. '} '
-    else
-        return tostring(o)
-    end
-end
+
 
 print(dump(p.getItemMeta(2)))
