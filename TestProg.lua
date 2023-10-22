@@ -1,13 +1,13 @@
 p = peripheral.wrap('top')
 function getMethods()
-    for k, v in pairs(p.getDocs()) do
+    for k, v in pairs(p.getItem()) do
         print (k, v)
         read()
     end
 end
 getMethods()
 
-print(p.getDocs())
+print(p.getItem(1))
 
 
 
