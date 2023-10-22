@@ -54,21 +54,5 @@ function queue_flush()
 end
 
 
+--Learn Rednet
 rednet.open('bottom')
-local target = {}
-function target.write(s)
-    rednet.broadcast(s)
-end
-
-term.redirect(target)
-monitor.setTextScale(1)
-
-
-
-while true do
-    local status, err = pcall(function()
-        queue('TEST')
-        queue('-----------------')
-
-    end)
-end
