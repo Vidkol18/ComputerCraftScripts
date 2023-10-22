@@ -55,6 +55,17 @@ function queue_flush()
     buffer = {}
 end
 
+function getItemFromSlot(slot)
+    return machine.getItem(slot)
+end
+
+local machineSlot = {
+    ore = getItemFromSlot(1) or 'None',
+    primarySlurryTank = getItemFromSlot(2) or 'Empty',
+    primaryTank = getItemFromSlot(3) or 'Empty',
+    secondaryTank = getItemFromSlot(4) or '',
+    secondarySlurryTank = getItemFromSlot(7) or '',
+}
 
 
 while true do
@@ -65,10 +76,9 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Input : %s', machine.getItem(1) ..'')
-        queuef('Input : %s', machine.getItem(2) ..'')
-        queuef('Input : %s', machine.getItem(3) ..'')
-        --queuef('Output : %s', machine.getItemMeta() ..'')
+        queuef('Ore : %s', machineSlot.ore)
+        queuef('Acid : %s', machineSlot.primaryTank)
+
     end)
 
     if not status then
