@@ -12,6 +12,10 @@ function getMethods()
         --print (k, v)
         h.writeLine(k .. ' || ' .. v)
     end
+    h.writeLine()
+    h.writeLine()
+    h.writeLine("--Metadata:")
+    h.writeLine(dump(p.getMetadata()))
 
     h.writeLine()
     h.writeLine()
@@ -19,7 +23,7 @@ function getMethods()
     h.close()
     fs.move(file,directory..file)
 end
---getMethods()
+getMethods()
 
 
 
