@@ -83,7 +83,7 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Ore : %s', itemDetail.ore.name)
+        queuef('Ore : %s', itemDetail.ore.name .. ' | ' .. itemDetail.ore.count)
 
     end)
 
