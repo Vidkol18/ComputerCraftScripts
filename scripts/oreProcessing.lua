@@ -53,9 +53,7 @@ function queue_flush()
     buffer = {}
 end
 
-
-term.redirect(monitor)
-monitor.setTextScale(1)
+term.redirect('monitor_1')
 
 
 
