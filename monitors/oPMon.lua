@@ -11,6 +11,6 @@ senderID, message, distance = rednet.receive()
 while true do
     term.clear()
     term.setCursorPos(1, 1)
-    print(senderID .. ': ' .. message)
+    print(message)
     os.sleep(1)
 end
