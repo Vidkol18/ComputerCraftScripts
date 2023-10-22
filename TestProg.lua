@@ -38,7 +38,7 @@ function getMethods()
     h.writeLine()
     h.writeLine("--getItem:")
     for i = 1, 6 do
-        for k, v in pairs(p.getItem(i)) do
+        for k, v in ipairs(p.getItem(i)) do
             print (k, v)
             h.writeLine(k .. ' || ' ..dump(v))
         end
