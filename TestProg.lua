@@ -38,7 +38,7 @@ function getMethods()
     h.writeLine()
     h.writeLine("--getItem:")
     local teapot = 1;
-        for k, v in pairs(p.getItem(i)) do
+        for k, v in pairs(p.getItem(teapot)) do
             if teapot == 6 then break end
             print (k, v)
             h.writeLine(k .. ' || ' ..dump(v))
