@@ -1,5 +1,6 @@
-term.redirect(peripheral.wrap('top'))
 print('ID: ' .. os.computerID())
+print('Running...')
+term.redirect(peripheral.wrap('top'))
 
 local modemPort = 'bottom'
 

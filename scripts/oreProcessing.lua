@@ -65,8 +65,10 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Input : %s', machine.getItem() ..'')
-        queuef('Output : %s', machine.getItemMeta() ..'')
+        queuef('Input : %s', machine.getItem(1) ..'')
+        queuef('Input : %s', machine.getItem(2) ..'')
+        queuef('Input : %s', machine.getItem(3) ..'')
+        --queuef('Output : %s', machine.getItemMeta() ..'')
     end)
 
     if not status then
@@ -80,9 +82,4 @@ while true do
     queue_flush()
     os.sleep(1)
 end
-
-
---rednet.send(2, 'Hello, World!')
---senderID, message, distance = rednet.receive()
---term.write('- ' .. senderID .. ': '.. message)
 
