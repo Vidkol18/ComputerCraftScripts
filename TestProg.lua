@@ -32,25 +32,17 @@ function getMethods()
         print (k, v)
         h.writeLine(k .. ' || ' .. dump(v))
     end
-    --h.writeLine(dump(p.getMetadata()))
 
     h.writeLine()
     h.writeLine()
     h.writeLine("--getItem:")
     local teapot = 1;
-        for k, v in pairs(p.getItem(teapot)) do
-            if teapot == 6 then break end
-            print (k, v)
-            h.writeLine(k .. ' || ' ..dump(v))
-
-            for m, n in pairs(k.getMetadata()) do
-                print (m, n)
-                read()
-                h.writeLine(m .. ' || ' .. n)
-            end
-
-            teapot = teapot + 1
-        end
+    for k, v in pairs(p.getItem(teapot)) do
+        if teapot == 6 then break end
+        print (k, v)
+        h.writeLine(k .. ' || ' ..dump(v))
+        teapot = teapot + 1
+    end
 
     h.writeLine()
     h.writeLine()
