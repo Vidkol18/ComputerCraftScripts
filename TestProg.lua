@@ -10,7 +10,7 @@ function getMethods()
 
     for k, v in pairs(p.getDocs()) do
         --print (k, v)
-        h.writeLine(k,v .. ' ermm ' .. v)
+        h.writeLine(k .. ' || ' .. v)
     end
 
     h.writeLine()
@@ -19,7 +19,25 @@ function getMethods()
     h.close()
     fs.move(file,directory..file)
 end
-getMethods()
+--getMethods()
+
+
+
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k,v in pairs(o) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
+print(dump(p.getItem(1)))
+
 
 
 
