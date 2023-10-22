@@ -56,17 +56,17 @@ function queue_flush()
 end
 
 function getItemFromSlot(slot)
-    return machine.getItem(slot)
+    return machine.getItemMeta(slot)
 end
 
 
 
 local machineSlot = {
-    ore = machine.getInput(),
-    primarySlurryTank = getItemFromSlot(2) or 'Empty',
-    primaryTank = getItemFromSlot(3) or 'Empty',
-    secondaryTank = getItemFromSlot(4) or '',
-    secondarySlurryTank = getItemFromSlot(5) or '',
+    ore = getItemFromSlot(1).name,
+    primarySlurryTank = getItemFromSlot(2).name or 'Empty',
+    primaryTank = getItemFromSlot(3).name or 'Empty',
+    secondaryTank = getItemFromSlot(4).name or '',
+    secondarySlurryTank = getItemFromSlot(7).name or '',
 }
 
 
