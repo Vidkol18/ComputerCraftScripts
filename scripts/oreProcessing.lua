@@ -69,8 +69,9 @@ end
 
 local itemDetail = {
     ore = {
-        name = machine.getItemMeta(2).name,
-        count = machine.getItemMeta(2).count
+        slot = machine.getItemMeta(2),
+        name = slot.name,
+        count = slot.count
     }
 }
 
