@@ -61,6 +61,6 @@ while true do
     rednet.send(2, 'Hello, World!')
 end
 
-senderID, message, distance = rednet.receive()
-term.write('- ' .. senderID .. ': '.. message)
+--senderID, message, distance = rednet.receive()
+--term.write('- ' .. senderID .. ': '.. message)
 
