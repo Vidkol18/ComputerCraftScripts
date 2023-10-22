@@ -7,12 +7,7 @@ function getMethods()
 end
 --getMethods()
 
-for k, v in pairs(p.getItem()) do
-    print (k, v)
-    read()
-end
-
---print(p.getItem(1))
+print(p.getItem(3))
 
 
 
