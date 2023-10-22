@@ -36,7 +36,7 @@ function dump(o)
     end
 end
 
-print(dump(p.getMetaData()))
+print(dump(p.getItemMeta(1)))
 
 
 
