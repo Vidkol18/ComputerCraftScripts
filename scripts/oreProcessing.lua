@@ -67,6 +67,10 @@ local machineSlot = {
     secondarySlurryTank = getItemFromSlot(5) or '',
 }
 
+for i = 1, i < machine.getItem().length do
+    print(i .. ' : ' .. machine.getItem(i) or '')
+end
+
 
 while true do
     local status, err = pcall(function()
