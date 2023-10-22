@@ -30,9 +30,19 @@ function getMethods()
     h.writeLine("--Metadata:")
     for k, v in pairs(p.getMetadata()) do
         print (k, v)
-        --h.writeLine(k .. ' || ' .. v)
+        h.writeLine(k .. ' || ' .. dump(v))
     end
     --h.writeLine(dump(p.getMetadata()))
+
+    h.writeLine()
+    h.writeLine()
+    h.writeLine("--getItem:")
+    for i = 1, 6 do
+        for k, v in pairs(p.getItem(i)) do
+            print (k, v)
+            h.writeLine(k .. ' || ' ..dump(v))
+        end
+    end
 
     h.writeLine()
     h.writeLine()
