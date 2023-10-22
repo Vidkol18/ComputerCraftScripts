@@ -59,6 +59,8 @@ function getItemFromSlot(slot)
     return machine.getItem(slot)
 end
 
+
+
 local machineSlot = {
     ore = machine.getInput(),
     primarySlurryTank = getItemFromSlot(2) or 'Empty',
