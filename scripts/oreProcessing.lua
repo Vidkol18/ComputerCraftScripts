@@ -62,7 +62,11 @@ while true do
         queue('Crafting Status')
         queue('------------------')
         queue('')
-        queuef('Power : %s', machine.getEnergyCapacity())
+        queuef('Power : %s', machine.getEnergyStored())
+        queuef('Limit : %s', machine.getEnergyCapacity())
+        queue('')
+        queuef('Input : %s', machine.getItem())
+        queuef('Output : %s', machine.getItemMeta())
     end)
 
     if not status then
