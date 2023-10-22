@@ -89,6 +89,8 @@ function updateTables()
         itemDetail.ore.name = ''
         itemDetail.ore.count = ''
     end
+
+    print('update...')
 end
 
 
