@@ -60,16 +60,12 @@ function getItemFromSlot(slot)
 end
 
 local machineSlot = {
-    ore = getItemFromSlot(1) or 'None',
+    ore = machine.getInput(),
     primarySlurryTank = getItemFromSlot(2) or 'Empty',
     primaryTank = getItemFromSlot(3) or 'Empty',
     secondaryTank = getItemFromSlot(4) or '',
     secondarySlurryTank = getItemFromSlot(5) or '',
 }
-
-for i = 1, i < 6 do
-    print(i .. ' : ' .. machine.getItem(i) or '')
-end
 
 
 while true do
@@ -81,7 +77,6 @@ while true do
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
         queuef('Ore : %s', machineSlot.ore)
-        queuef('Acid : %s', machineSlot.primaryTank)
 
     end)
 
