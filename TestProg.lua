@@ -7,11 +7,12 @@ function getMethods()
     local file = peripheral.getType(p)
     local h = fs.open(file, "w")
     h.writeLine("--Methods:")
+
     for k, v in pairs(p.getDocs()) do
         --print (k, v)
-        h.writeLine(k)
         h.writeLine('HELP '.. v)
     end
+
     h.writeLine()
     h.writeLine()
     h.writeLine("---End Of File---")
