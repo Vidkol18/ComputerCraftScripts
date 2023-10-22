@@ -5,4 +5,9 @@ function getMethods()
         read()
     end
 end
-getMethods()
+--getMethods()
+
+print(p.getDocs())
+
+
+
