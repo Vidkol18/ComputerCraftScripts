@@ -29,8 +29,8 @@ function getMethods()
     h.writeLine()
     h.writeLine("--Metadata:")
     for k, v in pairs(p.getMetadata()) do
-        --print (k, v)
-        h.writeLine(k .. ' || ' .. v)
+        print (k, v)
+        --h.writeLine(k .. ' || ' .. v)
     end
     --h.writeLine(dump(p.getMetadata()))
 
