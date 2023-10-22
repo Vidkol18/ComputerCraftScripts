@@ -9,6 +9,8 @@ rednet.open(modemPort)
 senderID, message, distance = rednet.receive()
 
 while true do
+    term.clear()
+    term.setCursorPos(1, 1)
     print(senderID .. ': ' .. message)
     os.sleep(1)
 end

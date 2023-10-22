@@ -49,6 +49,7 @@ end
 function queue_flush()
     term.clear()
     term.setCursorPos(1, 1)
+    print('Running ...')
 
     rednet.send(2, table.concat(buffer, '\n'))
     buffer = {}
