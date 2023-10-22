@@ -58,4 +58,4 @@ end
 rednet.close('bottom') -- just in case close the connection if one is running.
 rednet.open('bottom')
 
-rednet.send(2, 'Hello, World!')
+rednet.send(1, 'Hello, World!')
