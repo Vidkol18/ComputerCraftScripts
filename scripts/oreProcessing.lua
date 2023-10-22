@@ -67,7 +67,7 @@ local machineSlot = {
     secondarySlurryTank = getItemFromSlot(5) or '',
 }
 
-for i = 1, i < machine.getItem().length do
+for i = 1, i < 6 do
     print(i .. ' : ' .. machine.getItem(i) or '')
 end
 
