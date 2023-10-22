@@ -61,4 +61,4 @@ rednet.open('bottom')
 senderID, message, distance = rednet.receive()
 term.write(senderID .. ': '.. message)
 
-rednet.send(senderID, 'Hello, World!')
+rednet.send(2, 'Hello, World!')
