@@ -8,8 +8,8 @@ function getMethods()
     local h = fs.open(file, "w")
     h.writeLine("--Methods:")
     for k, v in pairs(p.getDocs()) do
-        print (k, v)
-        h.writeLine(k, v)
+        --print (k, v)
+        --h.writeLine(k, v)
         h.writeLine(v)
     end
     h.writeLine()
