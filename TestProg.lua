@@ -9,7 +9,7 @@ function getMethods()
     h.writeLine("--Methods:")
     for k, v in pairs(p.getDocs()) do
         print (k, v)
-        h.writeLine(v)
+        h.writeLine(k .. ' ' .. v)
     end
     h.writeLine()
     h.writeLine()
