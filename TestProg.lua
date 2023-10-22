@@ -42,6 +42,12 @@ function getMethods()
             if teapot == 6 then break end
             print (k, v)
             h.writeLine(k .. ' || ' ..dump(v))
+
+            for m, n in pairs(v.getDocs()) do
+                --print (k, v)
+                h.writeLine(m .. ' || ' .. n)
+            end
+
             teapot = teapot + 1
         end
 
