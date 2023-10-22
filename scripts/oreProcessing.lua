@@ -69,7 +69,7 @@ end
 end
 
 function getItemFromSlot(slot)
-    return dump(machine.getItemMeta(slot).name)
+    return dump(machine.getItemMeta(1).name)
 end
 
 
