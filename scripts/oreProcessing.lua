@@ -22,6 +22,9 @@ getItem : function
 pushItem : function
 ]]--
 
+peripheral.find("modem", rednet.close)
+peripheral.find("modem", rednet.open)
+
 function getMethods()
     p = peripheral.wrap('top')
     for k, v in pairs(p) do
@@ -32,9 +35,7 @@ end
 --getMethods()
 
 
-
 machine = peripheral.wrap('top')
-monitor = peripheral.wrap('bottom')
 
 buffer = {}
 function queue(text)
@@ -49,18 +50,32 @@ function queue_flush()
     term.clear()
     term.setCursorPos(1, 1)
 
-    print(table.concat(buffer, '\n'))
+    rednet.send(2, table.concat(buffer, '\n'))
     buffer = {}
 end
 
 
---Learn Rednet
-rednet.close('bottom') -- just in case close the connection if one is running.
-rednet.open('bottom')
+
 while true do
-    rednet.send(2, 'Hello, World!')
+    local status, err = pcall(function()
+        queue('HELLO TEAPOT')
+        queue('===========')
+        queue('')
+    end)
+
+    if not status then
+        buffer = {}
+        queue('Error reading data')
+        queue('Check connections.')
+        queue('------------------')
+        queue(err)
+    end
+
+    queue_flush()
 end
 
+
+--rednet.send(2, 'Hello, World!')
 --senderID, message, distance = rednet.receive()
 --term.write('- ' .. senderID .. ': '.. message)
 
