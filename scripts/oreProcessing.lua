@@ -55,14 +55,27 @@ function queue_flush()
     buffer = {}
 end
 
+function dump(o)
+if type(o) == 'table' then
+    local s = '{ '
+    for k,v in pairs(o) do
+        if type(k) ~= 'number' then k = '"'..k..'"' end
+        s = s .. '['..k..'] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+else
+    return tostring(o)
+end
+end
+
 function getItemFromSlot(slot)
-    return machine.getItemMeta(slot)
+    return dump(machine.getItemMeta(slot).name)
 end
 
 
 
 local machineSlot = {
-    ore = getItemFromSlot(1).name,
+    ore = getItemFromSlot(1),
     primarySlurryTank = getItemFromSlot(2).name or 'Empty',
     primaryTank = getItemFromSlot(3).name or 'Empty',
     secondaryTank = getItemFromSlot(4).name or '',
