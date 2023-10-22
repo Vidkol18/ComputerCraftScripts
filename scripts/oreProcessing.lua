@@ -64,7 +64,7 @@ local machineSlot = {
     primarySlurryTank = getItemFromSlot(2) or 'Empty',
     primaryTank = getItemFromSlot(3) or 'Empty',
     secondaryTank = getItemFromSlot(4) or '',
-    secondarySlurryTank = getItemFromSlot(7) or '',
+    secondarySlurryTank = getItemFromSlot(5) or '',
 }
 
 
