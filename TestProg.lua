@@ -7,7 +7,7 @@ function getMethods()
 end
 --getMethods()
 
-print(p.getItem(3))
+print(p.getItem(1))
 
 
 
