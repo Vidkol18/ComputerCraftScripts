@@ -53,7 +53,15 @@ function queue_flush()
     buffer = {}
 end
 
-term.redirect('monitor_1')
+
+rednet.open('bottom')
+local target = {}
+function target.write(s)
+    rednet.broadcast(s)
+end
+
+term.redirect(target)
+monitor.setTextScale(1)
 
 
 
