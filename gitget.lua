@@ -5,8 +5,8 @@ local async = true
 local silent = false
 
 local preset = {
-    user = 'Vidkol18',
-    repo = 'ComputerCraftScripts',
+    user = nil,
+    repo = nil,
     branch = nil,
     path = nil,
     start = function()
@@ -32,7 +32,7 @@ if #args < 2 then
     error()
 end
 
-local function save(data, file)
+local function savef(data, file)
     -- Remove file extension
     local fileWithoutExtension = string.gsub(file, "%.lua$", '')
     local resolvedFile = shell.resolve(fileWithoutExtension:gsub('%%20', ' '))
@@ -45,6 +45,17 @@ local function save(data, file)
     end
 
     local f = fs.open(resolvedFile, 'w')
+    f.write(data)
+    f.close()
+end
+
+local function save(data,file)
+    local file = shell.resolve(file:gsub("%%20"," "))
+    if not (fs.exists(string.sub(file,1,#file - #fs.getName(file))) and fs.isDir(string.sub(file,1,#file - #fs.getName(file)))) then
+        if fs.exists(string.sub(file,1,#file - #fs.getName(file))) then fs.delete(string.sub(file,1,#file - #fs.getName(file))) end
+        fs.makeDir(string.sub(file,1,#file - #fs.getName(file)))
+    end
+    local f = fs.open(file,"w")
     f.write(data)
     f.close()
 end
