@@ -57,8 +57,10 @@ end
 --Learn Rednet
 rednet.close('bottom') -- just in case close the connection if one is running.
 rednet.open('bottom')
+while true do
+    rednet.send(2, 'Hello, World!')
+end
 
 senderID, message, distance = rednet.receive()
-term.write(senderID .. ': '.. message)
+term.write('- ' .. senderID .. ': '.. message)
 
-rednet.send(2, 'Hello, World!')
