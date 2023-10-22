@@ -56,32 +56,17 @@ function queue_flush()
 end
 
 function dump(o)
-if type(o) == 'table' then
-    local s = '{ '
-    for k,v in pairs(o) do
-        if type(k) ~= 'number' then k = '"'..k..'"' end
-        s = s .. '['..k..'] = ' .. dump(v) .. ','
+    if type(o) == 'table' then
+        local s = '{ '
+        for k,v in pairs(o) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
     end
-    return s .. '} '
-else
-    return tostring(o)
 end
-end
-
-function getItemFromSlot(slot)
-    return dump(machine.getItemMeta(1).name)
-end
-
-
-
-local machineSlot = {
-    ore = getItemFromSlot(1),
-    primarySlurryTank = getItemFromSlot(2).name or 'Empty',
-    primaryTank = getItemFromSlot(3).name or 'Empty',
-    secondaryTank = getItemFromSlot(4).name or '',
-    secondarySlurryTank = getItemFromSlot(7).name or '',
-}
-
 
 while true do
     local status, err = pcall(function()
@@ -91,7 +76,7 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Ore : %s', machineSlot.ore)
+        queuef('Ore : %s', dump(machine.getItemMeta(1).name))
 
     end)
 
