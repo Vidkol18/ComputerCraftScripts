@@ -43,7 +43,7 @@ function getMethods()
             print (k, v)
             h.writeLine(k .. ' || ' ..dump(v))
 
-            for m, n in pairs(v.getDocs()) do
+            for m, n in pairs(k.getDocs()) do
                 --print (k, v)
                 h.writeLine(m .. ' || ' .. n)
             end
