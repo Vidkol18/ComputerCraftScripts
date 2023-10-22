@@ -37,14 +37,13 @@ function getMethods()
     h.writeLine()
     h.writeLine()
     h.writeLine("--getItem:")
-    for i = 1, 6 do
-        --for k, v in ipairs(p.getItem(i)) do
-        print(p.getItem(i))
-        read();
-            --print (k, v)
-            --h.writeLine(k .. ' || ' ..dump(v))
-       -- end
-    end
+    local teapot = 1;
+        for k, v in pairs(p.getItem(i)) do
+            if teapot == 6 then break end
+            print (k, v)
+            h.writeLine(k .. ' || ' ..dump(v))
+            teapot = teapot + 1
+        end
 
     h.writeLine()
     h.writeLine()
