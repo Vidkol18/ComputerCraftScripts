@@ -58,9 +58,10 @@ end
 
 while true do
     local status, err = pcall(function()
-        queue('HELLO TEAPOT')
-        queue('===========')
+        queue('Crafting Status')
+        queue('------------------')
         queue('')
+        queuef('Power : %s', machine.getEnergyCapacity())
     end)
 
     if not status then
@@ -72,6 +73,7 @@ while true do
     end
 
     queue_flush()
+    os.sleep(1)
 end
 
 

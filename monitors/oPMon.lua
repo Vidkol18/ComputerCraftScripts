@@ -7,4 +7,8 @@ rednet.close(modemPort) -- Always close just in case it is already open.
 rednet.open(modemPort)
 
 senderID, message, distance = rednet.receive()
-print(senderID .. ': ' .. message)
+
+while true do
+    print(senderID .. ': ' .. message)
+    os.sleep(1)
+end
