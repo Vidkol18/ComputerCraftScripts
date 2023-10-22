@@ -9,10 +9,12 @@ local modemPort = 'bottom'
 rednet.close(modemPort) -- Always close just in case it is already open.
 rednet.open(modemPort)
 
+term.clear()
+
 
 
 while true do
-    term.clear()
+    --term.clear()
     term.setCursorPos(1, 1)
 
     senderID, message, distance = rednet.receive()
