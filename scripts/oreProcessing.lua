@@ -67,11 +67,16 @@ function dump(o)
     end
 end
 
+function getItemSlot(slot)
+    --This returns a table
+    return machine.getItemMeta(slot)
+end
+
 local itemDetail = {
     ore = {
-        slot = machine.getItemMeta(2),
-        name = slot.name,
-        count = slot.count
+        name = getItemSlot(2).name,
+        displayName = getItemSlot(2).displayName or '',
+        count = getItemSlot(2).count or ''
     }
 }
 
@@ -83,7 +88,7 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Ore : %s', itemDetail.ore.name .. ' | ' .. itemDetail.ore.count)
+        queuef('Ore : %s', itemDetail.ore.displayName .. ' | ' .. itemDetail.ore.count)
 
     end)
 
