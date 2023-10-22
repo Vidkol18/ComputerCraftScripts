@@ -10,7 +10,7 @@ function getMethods()
 
     for k, v in pairs(p.getDocs()) do
         --print (k, v)
-        h.writeLine('HELP '.. v)
+        h.writeLine(k,v .. ' ermm ' .. v)
     end
 
     h.writeLine()
