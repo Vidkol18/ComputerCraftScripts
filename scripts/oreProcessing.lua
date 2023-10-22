@@ -73,15 +73,28 @@ function getItemSlot(slot)
 end
 
 local itemDetail = {
-    ore = {
-        name = getItemSlot(2).name,
-        displayName = getItemSlot(2).displayName or '',
-        count = getItemSlot(2).count or ''
-    }
+    ore = {},
+    acid = {},
+    slurry = {}
 }
+
+function updateTables()
+    local slot = machine.getItemMeta(2)
+    if slot then
+        itemDetail.ore.displayName = slot.displayName
+        itemDetail.ore.name = slot.name
+        itemDetail.ore.count = slot.count
+    else
+        itemDetail.ore.displayName = ''
+        itemDetail.ore.name = ''
+        itemDetail.ore.count = ''
+    end
+end
+
 
 while true do
     local status, err = pcall(function()
+        updateTables()
         queue('Crafting Status')
         queue('------------------')
         queue('')
