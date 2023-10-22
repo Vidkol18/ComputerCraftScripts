@@ -65,8 +65,8 @@ while true do
         queuef('Power : %s', machine.getEnergyStored())
         queuef('Limit : %s', machine.getEnergyCapacity())
         queue('')
-        queuef('Input : %s', machine.getItem())
-        queuef('Output : %s', machine.getItemMeta())
+        queuef('Input : %s', machine.getItem() ..'')
+        queuef('Output : %s', machine.getItemMeta() ..'')
     end)
 
     if not status then
