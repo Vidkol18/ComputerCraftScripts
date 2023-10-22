@@ -5,9 +5,14 @@ function getMethods()
         read()
     end
 end
-getMethods()
+--getMethods()
 
-print(p.getItem(1))
+for k, v in pairs(p.getItem(1)) do
+    print (k, v)
+    read()
+end
+
+--print(p.getItem(1))
 
 
 
